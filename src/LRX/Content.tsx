@@ -1,6 +1,5 @@
 import { Col, Divider, Row, Select } from "antd";
 import { LRXDocument, If } from "../common";
-import { LRXEditor } from "./LRXEditor";
 import { LRX } from "./LRX";
 import React, { useState } from "react";
 import * as parser from "../parser";
@@ -45,9 +44,6 @@ export function Content({ els }: ContentProps) {
         </Row>
         <Row>
           <Col md={24}>
-            <If condition={editable}>
-              <LRXEditor source={source} audioUrl={mp3 ?? ""} />
-            </If>
             <If condition={!editable}>
               <LRX doc={lrxDoc} audioUrl={mp3} />
             </If>
