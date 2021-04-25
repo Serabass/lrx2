@@ -7,7 +7,9 @@
   "types": "./lib/esm/index.d.ts",
   "license": "MIT",
   "scripts": {
+    "test": "jest",
     "build": "yarn build:esm && yarn build:cjs",
+    "build:watch": "yarn build:esm --watch && yarn build:cjs--watch ",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "prepublishOnly": "yarn build"
@@ -17,13 +19,26 @@
     "react-dom": "^16.0.0"
   },
   "devDependencies": {
-    "@types/react": "^16.9.49",
+    "@types/codemirror": "0.0.109",
+    "@types/jest": "^24.9.0",
+    "@types/pegjs": "^0.10.2",
+    "@types/react": "^16.14.5",
     "@types/react-dom": "^16.9.8",
+    "jest": "^24.9.0",
+    "prettier": "^2.0.4",
+    "prettier-miscellaneous": "^1.5.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "typescript": "^4.0.2"
   },
   "files": [
     "/lib"
-  ]
+  ],
+  "dependencies": {
+    "antd": "^4.15.2",
+    "codemirror": "^5.61.0",
+    "pegjs": "^0.10.0",
+    "react-codemirror2": "^7.2.1",
+    "svguitar": "^1.12.2"
+  }
 }

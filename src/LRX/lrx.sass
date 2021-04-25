@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;1,300&display=swap')
+@import '~codemirror/lib/codemirror.css'
+
+#root
+  padding: 10px
+
+.wrapper
+  width: 830px
+  margin: auto
+  // position: relative
+
+  .lrx-document
+    box-shadow: 0 0 3px 0 rgb(60 64 67 / 15%)
+    background-color: #fff
+    padding: 32px 44px 24px
+    float: left
+    border-radius: 2px
+    font-family: 'Roboto Mono', monospace
+    font-size: 13px
+    margin-bottom: 230px
+    width: 100%
+
+    canvas.drawer
+      display: none
+      left: 0
+      top: 0
+      right: 0
+      bottom: 0
+      position: absolute
+
+    .lrx-document-wrapper
+      width: 50%
+      float: left
+
+    .lrx-block
+      width: calc(100% - 20px)
+      float: left
+      transition: box-shadow 100ms ease-out
+      padding: 10px
+      margin-top: 10px
+
+      &:hover
+        box-shadow: 0 0 3px 0 rgb(60 64 67 / 15%)
+
+      .lrx-block-header
+        margin: 0 0 15px
+
+    .lrx-chords-line
+      .chord-entry
+        cursor: pointer
+        font-weight: bold
+        color: #05d1ff
+        position: relative
+
+        .popover
+          position: absolute
+          left: calc(-100% / 2)
+          padding: 10px
+          background-color: white
+          box-shadow: 0 0 3px 0 rgb(60 64 67 / 15%)
+          z-index: 999
+
+          &.visible
+            display: block
+    p
+      margin: 0
+
+    .lrx-lyrics-line
+      position: relative
+
+      &:not(.time-highlight) .progress-bar
+        transition: none
+
+      .progress-bar
+        position: absolute
+        top: 0
+        left: 0
+        width: 0
+        height: 100%
+        background: #72f5d36b
+        transition: width 254ms ease-out
+
+      .avg-rate
+        opacity: 0
+        position: absolute
+        left: -106px
+        top: -13px
+        background-color: #00c9ff42
+        border-radius: 100%
+        $size: 43px
+        line-height: $size
+        height: $size
+        width: $size
+        text-align: center
+        transition: opacity 500ms ease-out
+
+      &.active .avg-rate
+        opacity: 1
+
+      .lrx-lyrics-line-entry
+        cursor: pointer
+        &.highlight
+          background-color: rgba(61, 255, 255, 0.31)
+        &.active
+          background-color: rgba(0, 255, 97, 0.14)
+        &:hover
+          background-color: rgba(0, 255, 97, 0.18)
+
+      .lrx-lyrics-line-empty-entry
+        user-select: none
+        pointer-events: none
+        display: none
+
+    .lrx-document-info
+      float: left
+      padding: 10px
+      width: calc(50% - 20px)
+
+.lrx-editor
+  textarea.ant-input
+    font-family: monospace
+
+.react-codemirror2
+  .CodeMirror
+    height: auto
