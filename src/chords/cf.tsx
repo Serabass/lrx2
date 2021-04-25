@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { chords } from "./chords";
 import { Alert, Button, Col, Row } from "antd";
 import * as svguitar from "svguitar";
@@ -9,7 +9,6 @@ import { buildChordName } from "../LRX";
 import { transposeChord } from "./transpose-chord";
 import { LRXContext } from "../LRX/LRXContext";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import { createUseLocalStorage } from "../hooks/useLocalStorage";
 
 export interface ChordFingeringProps {
   chord: LRXChord;
@@ -20,8 +19,7 @@ export function ChordFingering2({ chord }: ChordFingeringProps) {
   let ref = React.createRef<HTMLDivElement>();
   let transposed = transposeChord(chord, ctx.transpose);
   let transposedChordName = buildChordName(transposed);
-  let useLocalStorage = createUseLocalStorage(`chord::${transposedChordName}`);
-  let [index, setIndex] = useLocalStorage("index", 0);
+  let [index, setIndex] = useState(0);
   let chordEntities = chords[transposedChordName];
 
   if (!chordEntities) {
@@ -176,7 +174,7 @@ export function ChordFingering2({ chord }: ChordFingeringProps) {
           /**
            * The font family used for all letters and numbers
            */
-          fontFamily: "Arial, \"Helvetica Neue\", Helvetica, sans-serif",
+          fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
 
           /**
            * Default title of the chart if no title is provided

@@ -5,7 +5,6 @@ import { LRXBlock } from "./LRXBlock";
 import "antd/dist/antd.css";
 import { Typography, Affix, Row, Col, Divider } from "antd";
 import ErrorBoundary from "antd/es/alert/ErrorBoundary";
-import { createUseLocalStorage } from "../hooks/useLocalStorage";
 import { If } from "../common";
 import { ChordTransposer } from "../chords";
 import { Info } from "../info";
@@ -19,10 +18,8 @@ export interface LRXProps {
   audioUrl?: string;
 }
 
-let useLocalStorage = createUseLocalStorage("lrx");
-
-export const LRX = ({ doc, audioUrl }: LRXProps) => {
-  let [transpose, setTranspose] = useLocalStorage<number>("transpose", 0);
+export function LRX({ doc, audioUrl }: LRXProps) {
+  let [transpose, setTranspose] = useState<number>(0);
   let [activeEntry, setActiveEntry] = useState<LRXGeneralLineEntry>();
   let [currentTime, setCurrentTime] = useState<number>(0);
   let maxRate = Math.max(...doc.blocks.map((b) => b.avgRate));
@@ -103,4 +100,4 @@ export const LRX = ({ doc, audioUrl }: LRXProps) => {
       </div>
     </LRXContext.Provider>
   );
-};
+}

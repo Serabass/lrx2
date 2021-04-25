@@ -1,22 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col, Row } from "antd";
 import { If } from "../common";
 import { ChordFingering2 } from "../chords/cf";
 import { LRXChord } from "../common";
-import { createUseLocalStorage } from "../hooks/useLocalStorage";
 import { CaretDownOutlined, CaretUpOutlined } from "@ant-design/icons";
 
 export interface ChordListProps {
   list: LRXChord[];
 }
 
-let useLocalStorage = createUseLocalStorage("chordList");
-
 export function ChordList({ list }: ChordListProps) {
-  let [showChords, setShowChords] = useLocalStorage<boolean>(
-    "showChords",
-    false
-  );
+  let [showChords, setShowChords] = useState<boolean>(false);
   return (
     <Row>
       <Col md={24}>
