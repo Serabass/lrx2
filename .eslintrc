@@ -8,6 +8,10 @@
     "prettier/react",
     "plugin:@typescript-eslint/eslint-recommended"
   ],
+  "plugins": [
+    // ...
+    "react-hooks"
+  ],
   "env": {
     "node": true
   },
@@ -32,6 +36,8 @@
     "react/no-unused-prop-types": 0,
     "import/export": 0,
     "react/jsx-pascal-case": 0,
-    "no-useless-constructor": 0
+    "no-useless-constructor": 0,
+    "react-hooks/rules-of-hooks": "error", // Проверяем правила хуков
+    "react-hooks/exhaustive-deps": "warn" // Проверяем зависимости эффекта
   }
 }

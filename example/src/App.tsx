@@ -63,12 +63,12 @@ let akvaruim = `Аквариум - Город золотой
 ~2 Комментарий к строке №2
 
 `;
+let lrxDoc = p.parse(akvaruim, {}) as LRXDocument;
 
 function App() {
-  let lrxDoc = p.parse(akvaruim, {}) as LRXDocument;
   return (
     <div className="App">
-      <LRX doc={lrxDoc} audioUrl={""} />
+      <LRX doc={lrxDoc} />
     </div>
   );
 }

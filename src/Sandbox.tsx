@@ -24,4 +24,4 @@ const Sandbox = function () {
   );
 };
 
-export default (Sandbox);
+export default Sandbox;

@@ -4,10 +4,10 @@ import { LRXGeneralLineEntry, LRXReportLine } from "./common";
 
 export interface InfoProps {
   activeEntry?: LRXGeneralLineEntry;
-  activeReportLines: LRXReportLine[];
+  activeReportLines?: LRXReportLine[];
 }
 
-export function Info({ activeEntry, activeReportLines }: InfoProps) {
+export function Info({ activeEntry, activeReportLines = [] }: InfoProps) {
   return (
     <div>
       {activeEntry ? (

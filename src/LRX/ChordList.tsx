@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Button, Col, Row } from "antd";
-import { If } from "../common";
+import { If, LRXChord } from "../common";
 import { ChordFingering2 } from "../chords/cf";
-import { LRXChord } from "../common";
 import { CaretDownOutlined, CaretUpOutlined } from "@ant-design/icons";
 
 export interface ChordListProps {

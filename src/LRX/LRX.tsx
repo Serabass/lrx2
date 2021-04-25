@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 // import "./lrx.sass";
-import { LRXDocument, LRXGeneralLineEntry } from "../common";
+import { LRXDocument, LRXGeneralLineEntry, If } from "../common";
 import { LRXBlock } from "./LRXBlock";
 import "antd/dist/antd.css";
 import { Typography, Affix, Row, Col, Divider } from "antd";
 import ErrorBoundary from "antd/es/alert/ErrorBoundary";
-import { If } from "../common";
 import { ChordTransposer } from "../chords";
 import { Info } from "../info";
 import { extractChords } from "./extract-chords";

@@ -28,11 +28,12 @@ export function useStateWithLocalStorage<T>(
   initialState: T
 ): StateWithLocalStorage<T> {
   let [v, setV] = useState<T>(initialState);
+  /*
 
   useEffect(() => {
     const raw = localStorage.getItem(key) || JSON.stringify(initialState);
     setV(JSON.parse(raw));
-  }, []);
+  }, [key, initialState]);
 
   useEffect(() => {
     if (v !== initialState) {
@@ -40,7 +41,8 @@ export function useStateWithLocalStorage<T>(
     } else {
       localStorage.removeItem(key);
     }
-  }, [v]);
+  }, [v, key, initialState]);
+*/
 
   return [v, setV];
 }

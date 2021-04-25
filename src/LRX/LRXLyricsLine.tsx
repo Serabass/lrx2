@@ -2,9 +2,9 @@ import React from "react";
 import {
   LRXGeneralLine,
   LRXGeneralLineEntry,
-  OnEntryClickedCallback
+  OnEntryClickedCallback,
+  If
 } from "../common";
-import { If } from "../common";
 
 export interface LRXLyricsLineProps {
   line: LRXGeneralLine;
