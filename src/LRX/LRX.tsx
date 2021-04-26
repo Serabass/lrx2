@@ -4,7 +4,6 @@ import { LRXDocument, LRXGeneralLineEntry, If } from "../common";
 import { LRXBlock } from "./LRXBlock";
 import "antd/dist/antd.css";
 import { Typography, Affix, Row, Col, Divider } from "antd";
-import ErrorBoundary from "antd/es/alert/ErrorBoundary";
 import { ChordTransposer } from "../chords";
 import { Info } from "../info";
 import { extractChords } from "./extract-chords";
@@ -54,46 +53,42 @@ export function LRX({ doc, audioUrl }: LRXProps) {
 
         <Row>
           <Col md={24}>
-            <ErrorBoundary>
-              <pre className="lrx-document">
-                <div className="lrx-toolbox">
-                  <ChordTransposer min={-6} max={6} buttonsType="dashed" />
-                </div>
-                <Divider />
+            <pre className="lrx-document">
+              <div className="lrx-toolbox">
+                <ChordTransposer min={-6} max={6} buttonsType="dashed" />
+              </div>
+              <Divider />
 
-                <Typography.Title level={2}>{doc.title.title}</Typography.Title>
+              <Typography.Title level={2}>{doc.title.title}</Typography.Title>
 
-                <ErrorBoundary>
-                  <div>
-                    <ChordList list={songChords} />
-                  </div>
+              <div>
+                <ChordList list={songChords} />
+              </div>
 
-                  <div className="lrx-document-wrapper">
-                    {doc.blocks.map((block, i) => (
-                      <LRXBlock
-                        maxRate={maxRate}
-                        block={block}
-                        key={i}
-                        transpose={transpose}
-                        currentTime={currentTime}
-                        activeEntry={activeEntry}
-                        onEntryClicked={(entry) => {
-                          setActiveEntry(entry);
-                        }}
-                      />
-                    ))}
-                  </div>
-                </ErrorBoundary>
-                <div className="lrx-document-info">
-                  <Affix>
-                    <Info
-                      activeEntry={activeEntry}
-                      activeReportLines={activeReportLines}
-                    />
-                  </Affix>
-                </div>
-              </pre>
-            </ErrorBoundary>
+              <div className="lrx-document-wrapper">
+                {doc.blocks.map((block, i) => (
+                  <LRXBlock
+                    maxRate={maxRate}
+                    block={block}
+                    key={i}
+                    transpose={transpose}
+                    currentTime={currentTime}
+                    activeEntry={activeEntry}
+                    onEntryClicked={(entry) => {
+                      setActiveEntry(entry);
+                    }}
+                  />
+                ))}
+              </div>
+              <div className="lrx-document-info">
+                <Affix>
+                  <Info
+                    activeEntry={activeEntry}
+                    activeReportLines={activeReportLines}
+                  />
+                </Affix>
+              </div>
+            </pre>
           </Col>
         </Row>
       </div>

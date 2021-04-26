@@ -24,7 +24,7 @@ export function Content({ els }: ContentProps) {
           <Col md={24}>
             <Select
               value={activeTab}
-              onChange={(value) => {
+              onChange={(value: any) => {
                 setActiveTab(value);
               }}
             >

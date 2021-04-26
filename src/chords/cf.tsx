@@ -8,7 +8,6 @@ import { LRXChord } from "../common";
 import { buildChordName } from "../LRX";
 import { transposeChord } from "./transpose-chord";
 import { LRXContext } from "../LRX/LRXContext";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
 export interface ChordFingeringProps {
   chord: LRXChord;
@@ -271,7 +270,6 @@ export function ChordFingering2({ chord }: ChordFingeringProps) {
       <Row>
         <Col md={6} style={{ textAlign: "left" }}>
           <Button
-            icon={<LeftOutlined />}
             size="small"
             disabled={index <= 0}
             onClick={() => {
@@ -284,7 +282,6 @@ export function ChordFingering2({ chord }: ChordFingeringProps) {
         </Col>
         <Col md={6} style={{ textAlign: "right" }}>
           <Button
-            icon={<RightOutlined />}
             size="small"
             disabled={index >= chordEntities.length - 1}
             onClick={() => {

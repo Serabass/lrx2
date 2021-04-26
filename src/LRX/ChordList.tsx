@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Col, Row } from "antd";
 import { If, LRXChord } from "../common";
 import { ChordFingering2 } from "../chords/cf";
-import { CaretDownOutlined, CaretUpOutlined } from "@ant-design/icons";
 
 export interface ChordListProps {
   list: LRXChord[];
@@ -16,7 +15,7 @@ export function ChordList({ list }: ChordListProps) {
         <Row>
           <Col md={24}>
             <Button onClick={() => setShowChords(!showChords)} type="dashed">
-              Аккорды {showChords ? <CaretUpOutlined /> : <CaretDownOutlined />}
+              Аккорды
             </Button>
           </Col>
         </Row>
