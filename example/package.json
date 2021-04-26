@@ -10,16 +10,14 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.2",
     "rc-picker": "^2.5.10",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-hot-loader": "^4.13.0",
     "react-scripts": "3.4.3",
     "typescript": "~3.7.2",
     "typescript-react-test": "file:.."
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build:dev": "dotenv -e .env.development react-scripts build",
+    "build:prod": "dotenv -e .env.production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -41,6 +39,7 @@
   "devDependencies": {
     "@types/jest": "^24.9.0",
     "@types/node": "^12.20.10",
+    "dotenv-cli": "^4.0.0",
     "jest": "^24.9.0",
     "ts-jest": "^26.5.5"
   }
