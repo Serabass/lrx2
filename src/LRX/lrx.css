@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;1,300&display=swap");
+
+#root {
+    padding: 10px;
+}
+
+.wrapper {
+    width: 830px;
+    margin: auto;
+}
+
+.wrapper .lrx-document {
+    box-shadow: 0 0 3px 0 black;
+    background-color: #fff;
+    padding: 32px 44px 24px;
+    float: left;
+    border-radius: 2px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    margin-bottom: 230px;
+    width: 100%;
+}
+
+.wrapper .lrx-document canvas.drawer {
+    display: none;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}
+
+.wrapper .lrx-document .lrx-document-wrapper {
+    width: 50%;
+    float: left;
+}
+
+.wrapper .lrx-document .lrx-block {
+    width: calc(100% - 20px);
+    float: left;
+    transition: box-shadow 100ms ease-out;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.wrapper .lrx-document .lrx-block:hover {
+    box-shadow: 0 0 3px 0 black;
+}
+
+.wrapper .lrx-document .lrx-block .lrx-block-header {
+    margin: 0 0 15px;
+}
+
+.wrapper .lrx-document .lrx-chords-line .chord-entry {
+    cursor: pointer;
+    font-weight: bold;
+    color: #05d1ff;
+    position: relative;
+}
+
+.wrapper .lrx-document .lrx-chords-line .chord-entry .popover {
+    position: absolute;
+    left: calc(-100% / 2);
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 0 3px 0 black;
+    z-index: 999;
+}
+
+.wrapper .lrx-document .lrx-chords-line .chord-entry .popover.visible {
+    display: block;
+}
+
+.wrapper .lrx-document p {
+    margin: 0;
+}
+
+.wrapper .lrx-document .lrx-lyrics-line {
+    position: relative;
+}
+
+.wrapper .lrx-document .lrx-lyrics-line:not(.time-highlight) .progress-bar {
+    transition: none;
+}
+
+.wrapper .lrx-document .lrx-lyrics-line .progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(114, 245, 211, 0.43);
+    transition: width 254ms ease-out;
+}
+
+.wrapper .lrx-document .lrx-lyrics-line .avg-rate {
+    opacity: 0;
+    position: absolute;
+    left: -106px;
+    top: -13px;
+    background-color: #00c9ff;
+    border-radius: 100%;
+    line-height: 43px;
+    height: 43px;
+    width: 43px;
+    text-align: center;
+    transition: opacity 500ms ease-out;
+}
+
+.wrapper .lrx-document .lrx-lyrics-line.active .avg-rate {
+    opacity: 1;
+}
+
+.wrapper .lrx-document .lrx-lyrics-line .lrx-lyrics-line-entry {
+    cursor: pointer;
+}
+
+.wrapper .lrx-document .lrx-lyrics-line .lrx-lyrics-line-entry.highlight {
+    background-color: rgba(61, 255, 255, 0.31);
+}
+
+.wrapper .lrx-document .lrx-lyrics-line .lrx-lyrics-line-entry.active {
+    background-color: rgba(0, 255, 97, 0.14);
+}
+
+.wrapper .lrx-document .lrx-lyrics-line .lrx-lyrics-line-entry:hover {
+    background-color: rgba(0, 255, 97, 0.18);
+}
+
+.wrapper .lrx-document .lrx-lyrics-line .lrx-lyrics-line-empty-entry {
+    user-select: none;
+    pointer-events: none;
+    display: none;
+}
+
+.wrapper .lrx-document .lrx-document-info {
+    float: left;
+    padding: 10px;
+    width: calc(50% - 20px);
+}
+
+.lrx-editor textarea.ant-input {
+    font-family: monospace;
+}
+
+.react-codemirror2 .CodeMirror {
+    height: auto;
+}

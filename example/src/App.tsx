@@ -1,4 +1,5 @@
 import React from "react";
+import { Row, Col } from "antd";
 import "./App.css";
 import { LRX, LRXDocument, p } from "typescript-react-test";
 
@@ -68,7 +69,11 @@ let lrxDoc = p.parse(akvaruim, {}) as LRXDocument;
 function App() {
   return (
     <div className="App">
-      <LRX doc={lrxDoc} />
+      <Row className="wrapper">
+        <Col md={8}>
+          <LRX doc={lrxDoc} audioUrl="akvarium.mp3" />
+        </Col>
+      </Row>
     </div>
   );
 }

@@ -1,5 +1,7 @@
+@import "~antd/dist/antd.css";
+@import "~typescript-react-test/src/LRX/lrx.css";
+
 .App {
-  text-align: center;
 }
 
 .App-logo {
