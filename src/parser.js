@@ -7,11 +7,11 @@
 "use strict";
 
 function peg$subclass(child, parent) {
-  function ctor() {
+  function Ctor() {
     this.constructor = child;
   }
-  ctor.prototype = parent.prototype;
-  child.prototype = new ctor();
+  Ctor.prototype = parent.prototype;
+  child.prototype = new Ctor();
 }
 
 function peg$SyntaxError(message, expected, found, location) {

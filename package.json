@@ -13,7 +13,7 @@
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "prepublishOnly": "yarn build",
-    "lint": "eslint ."
+    "lint": "eslint ./src/**/*.{ts,tsx}"
   },
   "peerDependencies": {
     "react": "^17.0.2",
