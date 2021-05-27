@@ -11,6 +11,8 @@
     "build": "yarn build:esm && yarn build:cjs",
     "build:watch": "yarn build:esm --watch && yarn build:cjs --watch ",
     "build:esm": "tsc",
+    "build:peg": "pegjs src/parser.pegjs",
+    "build:peg:watch": "nodemon -w ./ -e pegjs -x pegjs src/parser.pegjs",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "prepublishOnly": "yarn build",
     "lint": "eslint ./src/**/*.{ts,tsx}"

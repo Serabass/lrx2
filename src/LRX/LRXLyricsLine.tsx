@@ -28,10 +28,9 @@ export function LRXLyricsLine({
     currentPercentage = (currentValue / duration) * 100;
   }
 
+  let className = "lrx-lyrics-line" + (timeHighlight ? " time-highlight" : "");
   return (
-    <span
-      className={"lrx-lyrics-line" + (timeHighlight ? " time-highlight" : "")}
-    >
+    <span className={className}>
       <div
         className="progress-bar"
         style={{ width: `${currentPercentage}%` }}
@@ -55,9 +54,9 @@ export function LRXLyricsLine({
           }
         }
 
-        return (
+        return entry.content.map((span) => (
           <span key={i}>
-            <If condition={!!entry.content.trim()}>
+            <If condition={!!span.content.trim()}>
               <span
                 className={
                   "lrx-lyrics-line-entry" +
@@ -68,16 +67,16 @@ export function LRXLyricsLine({
                   onEntryClicked(entry);
                 }}
               >
-                {entry.content}&nbsp;
+                {span.content}&nbsp;
               </span>
             </If>
-            <If condition={!entry.content.trim()}>
+            <If condition={!span.content.trim()}>
               <span className="lrx-lyrics-line-empty-entry">
-                {entry.content}
+                {span.content}
               </span>
             </If>
           </span>
-        );
+        ));
       })}
     </span>
   );

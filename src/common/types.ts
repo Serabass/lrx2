@@ -12,10 +12,20 @@ export interface LRXGeneralLineEntryBookmark {
   rate: LRXGeneralLineEntryBookmarkRate;
 }
 
+export interface Word {
+  type: "Word";
+  content: string;
+}
+
+export interface Tag {
+  type: "Tag";
+  content: string;
+}
+
 export interface LRXGeneralLineEntry {
   _id: number;
   bm: LRXGeneralLineEntryBookmark;
-  content: string;
+  content: (Word | Tag)[];
   line: any;
 }
 

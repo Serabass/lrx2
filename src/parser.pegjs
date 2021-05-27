@@ -94,7 +94,7 @@ LRXBlock
       = content: LyricLineContent+ _ timecode: Timecode? NL {
         let parts = [];
 
-        let rates = content.filter(c => !!c.content.trim()).map(con => {
+        let rates = content.filter(c => c.content.length > 0).map(con => {
           if (!con.bm) {
             return 0;
           }
@@ -126,14 +126,28 @@ LRXBlock
         };
       }
 
+      Word = content: SourceCharacter+ _ {
+          return {
+            type: "Word",
+            content: content.join('')
+          };
+      }
+
+      Tag = '#' content: SourceCharacter+ _ {
+          return {
+            type: "Tag",
+            content: '#' + content.join('')
+          };
+      }
+
     LyricLineContent
-      = content: SourceCharacter+ bm: LineBookmark? {
+      = content: (Word / Tag)+ bm: LineBookmark? {
         return {
           _id: getNextEntryId(),
           type: 'LINE_CONTENT',
-          content: content.join(''),
+          content,
           bm,
-          loc: location(),
+          loc: location()
         };
       }
 
@@ -280,7 +294,6 @@ SourceCharacter 'source character'
   / [А-Яа-яёЁ]
   / [0-9]
   / WhiteSpace
-  / '#'
   / '?'
   / '!'
 
