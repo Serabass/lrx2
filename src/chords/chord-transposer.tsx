@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Button, Col, Row } from "antd";
+import { DownOutline } from "@ant-design/icons";
 import { ButtonType } from "antd/lib/button/button";
 import { LRXContext } from "../LRX/LRXContext";
 
@@ -18,7 +19,7 @@ export function ChordTransposer({
   let stringValue = ctx.transpose.toString();
 
   if (ctx.transpose > 0) {
-    stringValue = `+${stringValue}`;
+    stringValue = `+${stringValue}111`;
   }
 
   return (
@@ -45,7 +46,9 @@ export function ChordTransposer({
           onClick={() => {
             ctx.setTranspose(ctx.transpose + 1);
           }}
-        />
+        >
+          {DownOutline}
+        </Button>
       </Col>
     </Row>
   );
