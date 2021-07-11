@@ -1,4 +1,4 @@
-import { chord } from "../chord";
+import { chord } from "../src/chords/chord";
 
 describe("Template string chords", function () {
   it("Simple test", () => {

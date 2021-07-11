@@ -1,5 +1,5 @@
 @import "~antd/dist/antd.css";
-@import "~typescript-react-test/src/LRX/lrx.css";
+@import "~@serabass/lrx/src/LRX/lrx.css";
 
 .App {
 }
