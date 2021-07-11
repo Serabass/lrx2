@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Button, Col, Row } from "antd";
-import { DownOutline } from "@ant-design/icons";
+import { DownOutlined } from "@ant-design/icons";
 import { ButtonType } from "antd/lib/button/button";
 import { LRXContext } from "../LRX/LRXContext";
 
@@ -47,7 +47,7 @@ export function ChordTransposer({
             ctx.setTranspose(ctx.transpose + 1);
           }}
         >
-          {DownOutline}
+          {DownOutlined}
         </Button>
       </Col>
     </Row>

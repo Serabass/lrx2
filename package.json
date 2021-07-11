@@ -7,12 +7,11 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "build": "npm run build:esm && npm run build:cjs",
-    "build:watch": "npm run build:esm --watch && npm run build:cjs --watch ",
+    "build": "tsc",
+    "build:watch": "npm run build -- --watch",
     "build:esm": "tsc",
     "build:peg": "npx pegjs src/parser.pegjs",
     "build:peg:watch": "npx nodemon -w ./ -e pegjs -x pegjs src/parser.pegjs",
-    "build:cjs": "npx tsc --module commonjs --outDir lib/cjs",
     "prepublishOnly": "npm run build",
     "lint": "eslint ./src/**/*.{ts,tsx}"
   },
@@ -50,6 +49,7 @@
     "/lib"
   ],
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
     "@types/node": "^16.3.1",
     "antd": "^4.16.6",
     "codemirror": "^5.61.0",
