@@ -21,7 +21,6 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@types/codemirror": "0.0.109",
     "@types/jest": "^24.9.0",
     "@types/pegjs": "^0.10.2",
     "@types/react": "^17.0.2",
@@ -32,7 +31,6 @@
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-config-standard-react": "^9.2.0",
-    "eslint-plugin-flowtype": "^5.7.2",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-node": "^11.0.0",
@@ -53,10 +51,9 @@
   ],
   "dependencies": {
     "@types/node": "^16.3.1",
-    "antd": "^3.0.0-alpha0",
+    "antd": "^4.16.6",
     "codemirror": "^5.61.0",
     "pegjs": "^0.10.0",
-    "react-codemirror2": "^7.2.1",
     "svguitar": "^1.12.2"
   }
 }
