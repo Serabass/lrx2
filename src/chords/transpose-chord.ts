@@ -1,4 +1,4 @@
-import { LRXChord } from "../common/types";
+import { LRXChord } from "../common";
 
 export function transposeNote(note: string, amount: number) {
   // https://stackoverflow.com/a/45979883/2468733
