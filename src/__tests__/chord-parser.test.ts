@@ -1,4 +1,4 @@
-import { parseChord } from "../src";
+import { parseChord } from "../chords";
 
 const x = "x";
 

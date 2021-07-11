@@ -1,7 +1,7 @@
 import pegjs from "pegjs";
 import * as fs from "fs";
 import * as path from "path";
-import { buildChordName, extractChords } from "../src";
+import { buildChordName, extractChords } from "../LRX";
 
 describe("Extract Chords", function () {
   let file = path.join(__dirname, "../../parser.pegjs");

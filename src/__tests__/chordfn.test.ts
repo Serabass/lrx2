@@ -1,4 +1,4 @@
-import { chord } from "../chord";
+import { chord } from "../chords/chord";
 
 describe("Chord function", () => {
   it("Simple test", () => {
