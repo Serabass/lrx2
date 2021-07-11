@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "antd";
 import "./App.css";
-import { LRX, LRXDocument, p } from "typescript-react-test";
+import { LRX, LRXDocument, p } from "@serabass/lrx";
 
 let akvaruim = `Аквариум - Город золотой
 
