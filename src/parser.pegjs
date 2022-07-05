@@ -1,19 +1,15 @@
 {
   let entryCounter = 0;
-
   function getNextEntryId() {
     entryCounter++;
     return entryCounter;
   }
-
   function timeValue({mm, ss, ms}) {
     return mm * 60 + ss + (ms / 1000);
   }
-
   function extractList(list, index) {
     return list.map(function(element) { return element[index]; });
   }
-
   function buildList(head, tail, index) {
     return [head].concat(extractList(tail, index));
   }
@@ -22,15 +18,23 @@
 LRXDocument
  =  title: LRXDocumentTitle
     blocks: LRXBlock+
-    sep: LRXSeparator
-    report: LRXReport
+    report: LRXReport?
     EOF {
+      let rates = blocks.map(line => line.avgRate);
+      let newRates = [];
+      for (let rate of rates) {
+        if (!newRates.includes(rate)) {
+          newRates.push(rate);
+        }
+      }
+      let avgRate = newRates.length === 0 ? 0 : newRates.reduce((a, b) => a + b) / newRates.length;
+      
       return {
         type: 'DOCUMENT',
         title,
         blocks,
         report,
-        sep,
+        avgRate,
       }
     }
 
@@ -50,15 +54,12 @@ LRXBlock
       let lines = body.filter(line => line.type === 'LINE');
       let rates = lines.map(line => line.avgRate);
       let newRates = [];
-
       for (let rate of rates) {
         if (!newRates.includes(rate)) {
           newRates.push(rate);
         }
       }
-
       let avgRate = newRates.length === 0 ? 0 : newRates.reduce((a, b) => a + b) / newRates.length;
-
       return {
         type: 'BLOCK',
         header,
@@ -93,29 +94,22 @@ LRXBlock
     LyricsLine 'lyrics line'
       = content: LyricLineContent+ _ timecode: Timecode? NL {
         let parts = [];
-
-        let rates = content.filter(c => c.content.length > 0).map(con => {
+        let rates = content.filter(c => !!c.content.trim()).map(con => {
           if (!con.bm) {
             return 0;
           }
-
           if (!con.bm.rate) {
             return 0;
           }
-
           return con.bm.rate.rate;
         });
-
         let newRates = [];
-
         for (let rate of rates) {
           if (!newRates.includes(rate)) {
             newRates.push(rate);
           }
         }
-
         let avgRate = newRates.length === 0 ? 0 : newRates.reduce((a, b) => a + b) / newRates.length;
-
         return {
           type: 'LINE',
           content: content,
@@ -126,28 +120,14 @@ LRXBlock
         };
       }
 
-      Word = content: SourceCharacter+ _ {
-          return {
-            type: "Word",
-            content: content.join('')
-          };
-      }
-
-      Tag = '#' content: SourceCharacter+ _ {
-          return {
-            type: "Tag",
-            content: '#' + content.join('')
-          };
-      }
-
     LyricLineContent
-      = content: (Word / Tag)+ bm: LineBookmark? {
+      = content: SourceCharacter+ bm: LineBookmark? {
         return {
           _id: getNextEntryId(),
           type: 'LINE_CONTENT',
-          content,
+          content: content.join(''),
           bm,
-          loc: location()
+          loc: location(),
         };
       }
 
@@ -184,7 +164,7 @@ LRXSeparator
     }
   }
 
-LRXReport = lines: LRXReportLine+ {
+LRXReport = sep: LRXSeparator lines: LRXReportLine+ {
   return {
   	type: 'REPORT',
     lines,
@@ -241,7 +221,6 @@ ChordsLine 'chord line'
 Chord 'chord'
   = spaceStart: _
     note: Note
-    mod: ChordMod?
     suffix: ChordSuffix?
     bass: ChordBass?
     spaceEnd: _ {
@@ -252,7 +231,7 @@ Chord 'chord'
           end: spaceEnd.join('')
         },
         bass,
-        note, mod, suffix,
+        note, suffix,
         loc: location()
       };
     }
@@ -265,9 +244,19 @@ ChordBass 'chord bass'
   };
  }
 
-Note = [ABCDEFG]
-
-ChordMod = [#b]
+Note = 
+ 'C#' /
+ 'C' /
+ 'D#' /
+ 'D' /
+ 'E' /
+ 'F#' /
+ 'F' /
+ 'G#' /
+ 'G' /
+ 'A#' /
+ 'A' /
+ 'B'
 
 ChordSuffix
  = 'M'
@@ -280,6 +269,7 @@ ChordSuffix
  / 'sus2'
  / 'sus4'
  / 'aug'
+ / 'add9'
 
 
 
@@ -294,6 +284,7 @@ SourceCharacter 'source character'
   / [А-Яа-яёЁ]
   / [0-9]
   / WhiteSpace
+  / '#'
   / '?'
   / '!'
 

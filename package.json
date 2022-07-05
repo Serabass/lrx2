@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watchAll",
+    "test:watch": "jest --watchAll --verbose --runInBand",
     "build": "tsc",
     "build:watch": "npm run build -- --watch",
     "build:esm": "tsc",
@@ -21,7 +21,7 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@types/jest": "^24.9.0",
+    "@types/jest": "^24.9.1",
     "@types/pegjs": "^0.10.2",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.2",
@@ -55,6 +55,7 @@
     "@types/node": "^16.3.1",
     "antd": "^4.16.6",
     "codemirror": "^5.61.0",
+    "peggy": "^2.0.1",
     "pegjs": "^0.10.0",
     "svguitar": "^1.12.2"
   }

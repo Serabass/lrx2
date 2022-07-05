@@ -1,2 +1,2 @@
-npm i
+npm install --silent
 npm run test:watch
